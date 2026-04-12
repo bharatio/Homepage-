@@ -1,0 +1,135 @@
+/* Custom Properties for Qatar Airways Theme */
+:root {
+    --qatar-maroon: #8A1538;
+    --qatar-maroon-dark: #630f28;
+    --cream-bg: #F3F2EF;
+    --white: #FFFFFF;
+    --text-main: #1A1A1A;
+    --text-muted: #5F6368;
+    --glass-border: rgba(138, 21, 56, 0.1);
+}
+
+/* Base Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--cream-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Premium Glassmorphism Cards */
+.glass-card {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Hero Section Typography */
+h1 {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+}
+
+/* Luxury Buttons */
+.btn-primary {
+    background-color: var(--qatar-maroon);
+    color: var(--white);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(138, 21, 56, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: var(--qatar-maroon-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(138, 21, 56, 0.4);
+}
+
+.btn-secondary {
+    border: 2px solid var(--qatar-maroon);
+    color: var(--qatar-maroon);
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(138, 21, 56, 0.05);
+    transform: translateY(-2px);
+}
+
+/* Section Transitions */
+section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Bulk Deal Card Gradient */
+.bulk-card {
+    background: linear-gradient(135deg, var(--qatar-maroon) 0%, var(--qatar-maroon-dark) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.bulk-card::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+}
+
+/* Navigation Link Hover */
+nav a {
+    position: relative;
+    color: var(--text-muted);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -4px;
+    left: 0;
+    background-color: var(--qatar-maroon);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: var(--qatar-maroon);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.5rem;
+    }
+    .btn-primary, .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+}
+
