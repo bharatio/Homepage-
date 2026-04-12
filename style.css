@@ -1,0 +1,465 @@
+/* PART 1 & 2: BRAND CORE & GLOBAL RESET */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+    --maroon: #8A1538;
+    --maroon-dark: #6a102b;
+    --maroon-glow: rgba(138, 21, 56, 0.2);
+    --cream: #FDFCF6;
+    --white: #ffffff;
+    --black: #0a0a0a;
+    --gray-50: #f9fafb;
+    --gray-100: #f3f4f6;
+    --gray-400: #9ca3af;
+    --gray-900: #111827;
+    --glass: rgba(255, 255, 255, 0.85);
+    --shadow-premium: 0 20px 50px -12px rgba(0, 0, 0, 0.08);
+    --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--cream);
+    color: var(--gray-900);
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+    selection-background: var(--maroon);
+    selection-color: var(--white);
+}
+
+/* Custom Selection */
+::selection {
+    background: var(--maroon);
+    color: white;
+}
+
+/* Scrollbar Design */
+::-webkit-scrollbar {
+    width: 6px;
+}
+::-webkit-scrollbar-track {
+    background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--maroon);
+    border-radius: 20px;
+}
+/* PART 3 & 4: PREMIUM NAVIGATION & ANIMATIONS */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(138, 21, 56, 0.05);
+    padding: 1.2rem 0;
+    transition: var(--transition);
+}
+
+.nav-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+.nav-logo {
+    font-weight: 900;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    color: var(--gray-900);
+    text-decoration: none;
+}
+
+.nav-logo span {
+    color: var(--maroon);
+}
+
+/* Animation Engine */
+@keyframes revealUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.animate-reveal {
+    animation: revealUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-scale {
+    animation: scaleIn 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.hero-gradient {
+    position: absolute;
+    top: -10%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--maroon-glow) 0%, transparent 70%);
+    z-index: -1;
+    filter: blur(80px);
+}
+/* PART 5 & 6: INDUSTRY VERTICALS & CARD ARCHITECTURE */
+.industry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2.5rem;
+    padding: 4rem 0;
+}
+
+.vertical-card {
+    background: var(--white);
+    padding: 3.5rem 2.5rem;
+    border-radius: 50px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.vertical-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: var(--maroon);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.vertical-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 40px 80px -15px rgba(138, 21, 56, 0.12);
+    border-color: var(--maroon-glow);
+}
+
+.vertical-card:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+}
+
+.icon-wrapper {
+    width: 70px;
+    height: 70px;
+    background: var(--gray-50);
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    transition: var(--transition);
+}
+
+.vertical-card:hover .icon-wrapper {
+    background: var(--maroon);
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.vertical-card:hover .icon-wrapper svg {
+    color: var(--white);
+    filter: drop-shadow(0 5px 15px rgba(255, 255, 255, 0.3));
+}
+
+.card-title {
+    font-size: 1.75rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 1rem;
+    color: var(--gray-900);
+    text-transform: uppercase;
+}
+
+.card-desc {
+    color: var(--gray-500);
+    font-size: 0.95rem;
+    line-height: 1.8;
+    font-weight: 500;
+}
+/* PART 7 & 8: E-COMMERCE ENGINE & SHOP UI */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 3rem;
+}
+
+.product-item {
+    background: transparent;
+    border-radius: 40px;
+    transition: var(--transition);
+}
+
+.product-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+    background: var(--gray-100);
+    border-radius: 48px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.product-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.product-item:hover .product-image-container img {
+    transform: scale(1.12);
+}
+
+.badge-float {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--white);
+    padding: 0.6rem 1.2rem;
+    border-radius: 18px;
+    font-size: 10px;
+    font-weight: 900;
+    color: var(--maroon);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.product-info {
+    padding: 1.5rem 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.price-tag {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--maroon);
+    background: var(--maroon-glow);
+    padding: 0.2rem 0.8rem;
+    border-radius: 12px;
+}
+
+.add-to-cart-btn {
+    width: 100%;
+    padding: 1.4rem;
+    background: var(--gray-900);
+    color: var(--white);
+    border: none;
+    border-radius: 24px;
+    font-weight: 800;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.add-to-cart-btn:hover {
+    background: var(--maroon);
+    transform: scale(1.02);
+    box-shadow: 0 20px 40px var(--maroon-glow);
+}
+/* PART 9 & 10: ELITE FOOTER, MOBILE DOCK & UTILITY SHIELD */
+
+/* --- FOOTER ARCHITECTURE --- */
+footer {
+    background: var(--black);
+    color: var(--white);
+    padding: 100px 0 60px 0;
+    position: relative;
+    z-index: 10;
+}
+
+.footer-container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 4rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4rem;
+}
+
+.footer-logo-box {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.footer-logo-box .logo-text {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -1.5px;
+    text-transform: uppercase;
+}
+
+.footer-logo-box p {
+    color: var(--gray-400);
+    line-height: 1.8;
+    font-weight: 500;
+    max-width: 320px;
+}
+
+.footer-title {
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    color: var(--maroon);
+    margin-bottom: 2rem;
+}
+
+.footer-links {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 1.2rem;
+}
+
+.footer-links a {
+    color: var(--gray-400);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--maroon);
+    padding-left: 8px;
+}
+
+/* --- MOBILE BOTTOM DOCK (The App Feel) --- */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .mobile-bottom-nav {
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        height: 75px;
+        background: rgba(10, 10, 10, 0.85);
+        backdrop-filter: blur(25px);
+        -webkit-backdrop-filter: blur(25px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 30px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        z-index: 9999;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-nav-item {
+        color: var(--gray-400);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-decoration: none;
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: var(--transition);
+    }
+
+    .mobile-nav-item.active {
+        color: var(--maroon);
+    }
+
+    .mobile-nav-item svg {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 4px;
+    }
+}
+
+/* --- GLOBAL UTILITIES (The Photo & Layout Fixers) --- */
+
+/* Photo Fix: Images will never stretch again */
+.img-container {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+/* Section Spacing */
+.section-v-padding {
+    padding: 120px 0;
+}
+
+/* Custom Text Styles */
+.text-uppercase-bold {
+    text-transform: uppercase;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.glass-pill {
+    background: var(--maroon-glow);
+    border: 1px solid rgba(138, 21, 56, 0.1);
+    padding: 8px 20px;
+    border-radius: 100px;
+    display: inline-block;
+}
+
+/* --- FINAL COPYRIGHT BAR --- */
+.bottom-bar {
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--gray-500);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
