@@ -270,3 +270,152 @@ p {
     from { opacity: 0; transform: translateY(60px); }
     to { opacity: 1; transform: translateY(0); }
 }
+/* PART 6 & 7: LIGHT MODE DOMINATION & ELITE TYPE */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+    --maroon: #8A1538;
+    --maroon-light: #fdf2f5;
+    --white: #ffffff;
+    --gray-soft: #fcfcfc;
+    --gray-text: #4b5563;
+    --gray-heading: #111827;
+    --border-light: #f3f4f6;
+    --shadow-premium: 0 30px 60px -12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+    background-color: var(--white) !important; /* No more black */
+    color: var(--gray-text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    letter-spacing: -0.01em;
+}
+
+/* Big & Bold Headings - No Black backgrounds allowed */
+h1, h2, h3 {
+    color: var(--gray-heading);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -0.04em;
+    line-height: 1;
+}
+
+section {
+    background-color: var(--white);
+    padding: 140px 0; /* Massive spacing for length */
+    border-bottom: 1px solid var(--border-light);
+}
+
+/* Glassy White Header */
+.header-glass {
+    background: rgba(255, 255, 255, 0.8) !important;
+    backdrop-filter: blur(25px);
+    border-bottom: 1px solid var(--border-light);
+}
+/* PART 8 & 9: CONTENT EXTENSION & GRID SYSTEM */
+
+.full-width-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+/* The Service Grid - Light & Airy */
+.service-grid-long {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 100px;
+    align-items: center;
+}
+
+.step-number {
+    font-size: 8rem;
+    font-weight: 900;
+    color: var(--maroon-light);
+    line-height: 0.5;
+    margin-bottom: 2rem;
+}
+
+/* Premium Image Engine - No distortion */
+.img-wrapper-premium {
+    width: 100%;
+    height: 700px; /* Long images */
+    border-radius: 50px;
+    overflow: hidden;
+    background: var(--gray-soft);
+    box-shadow: var(--shadow-premium);
+}
+
+.img-wrapper-premium img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 2s ease;
+}
+
+.img-wrapper-premium:hover img {
+    transform: scale(1.1);
+}
+/* PART 10 & 11: TRUST SYSTEM & MEGA LIGHT FOOTER */
+
+.trust-badge-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 60px 0;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+    background: var(--gray-soft);
+}
+
+.faq-item {
+    max-width: 800px;
+    margin: 0 auto 20px;
+    padding: 30px;
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    transition: all 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: var(--maroon);
+    box-shadow: var(--shadow-premium);
+}
+
+/* Pure White Footer */
+.footer-white {
+    background: var(--white);
+    padding: 120px 0 60px;
+    color: var(--gray-text);
+}
+
+.footer-nav-link {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--gray-text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-nav-link:hover {
+    color: var(--maroon);
+}
+
+.order-fab-whatsapp {
+    position: fixed;
+    bottom: 40px;
+    right: 40px;
+    background: var(--maroon);
+    color: white;
+    width: 80px;
+    height: 80px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 20px 40px rgba(138, 21, 56, 0.3);
+    z-index: 999;
+   }
